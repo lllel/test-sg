@@ -1,0 +1,24 @@
+@import "../variables";
+
+.main-menu-items {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid $grey-color-hsl237237237;
+}
+
+.main-menu-item {
+  margin-right: 50px;
+  font-size: $font-size-small;
+  line-height: $line-height-medium-big;
+  color: $grey-color-hsl128128128;
+  list-style-type: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+
+.main-menu-item--active {
+  color: $black-color;
+  border-bottom-color: $black-color;
+}

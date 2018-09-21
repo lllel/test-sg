@@ -1,0 +1,203 @@
+.animation-play {
+  animation-play-state: running;
+}
+
+@keyframes page-top-move {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    opacity: 0;
+  }
+
+  1%,
+  4% {
+    opacity: 0.2;
+  }
+
+  2% {
+    opacity: 0.3;
+  }
+
+  3% {
+    opacity: 0.4;
+  }
+
+  5% {
+    left: 80%;
+    opacity: 0;
+  }
+}
+
+@keyframes openModalMenu-middleLine {
+  0% {
+    background-color: $white-color;
+  }
+
+  70% {
+    background-color: $white-color;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes openModalMenu-topLine {
+  0% {
+    top: -8px;
+  }
+
+  70% {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  100% {
+    top: 0;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes openModalMenu-bottomLine {
+  0% {
+    top: 8px;
+  }
+
+  80% {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  100% {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes closeModalMenu-middleLine {
+  0% {
+    background-color: transparent;
+  }
+
+  70% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: $white-color;
+  }
+}
+
+@keyframes closeModalMenu-topLine {
+  0% {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  70% {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  100% {
+    top: -8px;
+    transform: rotate(0);
+  }
+}
+
+@keyframes closeModalMenu-bottomLine {
+  0% {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  80% {
+    top: 0;
+    transform: rotate(0);
+  }
+
+  100% {
+    top: 8px;
+    transform: rotate(0);
+  }
+}
+
+@keyframes openLoginMenu {
+  0% {
+    top: -1000px;
+  }
+
+  70% {
+    top: 135px;
+    transform: translateY(10px) scaleY(1.05);
+  }
+
+  100% {
+    top: 135px;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes closeLoginMenu {
+  0% {
+    top: 135px;
+  }
+
+  5% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    top: -1000px;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: $tablet-width) {
+  @keyframes openLoginMenu {
+    0% {
+      top: -1000px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    40% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -47%) scaleY(1.1);
+    }
+
+    100% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scaleY(1);
+    }
+  }
+
+  @keyframes closeLoginMenu {
+    0% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    20% {
+      left: 50%;
+      transform: translate(-50%, 10px);
+    }
+
+    100% {
+      top: -1000px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+  }
+}

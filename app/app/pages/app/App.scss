@@ -1,0 +1,57 @@
+@import "style_external/normalize";
+@import "variables";
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto"),
+  url("./content/fonts/roboto-regular.woff2") format("woff2"),
+  url("./content/fonts/roboto-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  font-family: "Roboto", "Arial", sans-serif;
+  min-width: $mobile-width;
+  max-width: $desktop-width;
+  margin: 0 auto;
+  overflow-x: hidden; //for ie bugs
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.ie-flex-bugs-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sticky-footer {
+  flex-grow: 1;
+}

@@ -1,0 +1,55 @@
+@import "../../../../../app/pages/app/variables";
+
+.create-button {
+  padding: 10px;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: $font-size-any-small;
+  line-height: $line-height-any-small;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.create-employees-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  padding: 25px;
+  box-shadow: 0 0 15px 5px $grey-color-hsl237237237;
+}
+
+.create-employees-input-container {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 28%;
+}
+
+.create-employees-input {
+  padding: 10px;
+  padding-left: 0;
+  margin-bottom: 15px;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: $font-size-any-small;
+  line-height: $line-height-any-small;
+  border: none;
+  border-bottom: 1px solid $black-color;
+
+  &::placeholder {
+    font-family: "Roboto", "Arial", sans-serif;
+    font-size: $font-size-any-small;
+    line-height: $line-height-any-small;
+    color: $grey-color-hsl128128128;
+  }
+}
+
+.create-employees-label {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: $font-size-any-small;
+  line-height: $line-height-any-small;
+}
+
+.create-employees-card {
+  margin: 0 auto;
+}

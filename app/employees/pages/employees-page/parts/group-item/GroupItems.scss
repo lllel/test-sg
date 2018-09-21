@@ -1,0 +1,144 @@
+@import "../../../../../app/pages/app/variables";
+
+.group-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 2px;
+  background-color: lavender;
+}
+
+.group-item ul {
+  margin-right: 50px;
+}
+
+.group-item-buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+}
+
+.create-subgroup-button {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: $font-size-any-small;
+  line-height: $line-height-any-small;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:before {
+    content: '+ ';
+    font-weight: $font-weight-bold;
+    color: $blue-color-hsl20115230;
+  }
+}
+
+.create-subgroup-add {
+  position: relative;
+  display: flex;
+  width: 40px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  background-image: url("./content/img/new.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background-color: $grey-color-hsl204204213;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: $grey-color-hsl204204213;
+  }
+}
+
+.create-subgroup-delete {
+  display: flex;
+  width: 30px;
+  height: 10px;
+  border: none;
+  background-color: transparent;
+  background-image: url("./content/img/chosen-sprite.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: -30px -11px;
+  cursor: pointer;
+}
+
+.employees-group-container {
+  width: 98%;
+  margin: 70px 0 50px auto;
+}
+
+.group-title {
+  position: relative;
+  display: block;
+  font-weight: $font-weight-bold;
+  margin-left: 35px;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: -20px;
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+    border: 3px solid grey;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    transform: rotate(-45deg);
+    cursor: pointer;
+  }
+}
+
+.group-title.employees-title-icon-hidden:before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: -20px;
+  display: block;
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+  border: 3px solid grey;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.level-access-title {
+  position: absolute;
+  top: 0;
+  left: 35%;
+}
+
+.employees-hidden .employees-in-group-container {
+  display: none;
+}

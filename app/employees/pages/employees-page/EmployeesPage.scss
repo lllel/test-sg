@@ -1,0 +1,46 @@
+@import "../../../app/pages/app/variables";
+
+.top-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-input {
+  margin: 15px 0;
+  padding: 5px;
+  width: 475px;
+  border: 1px solid $grey-color-hsl237237237;
+  border-radius: 3px;
+
+  &::placeholder {
+    color: $grey-color-hsl128128128;
+  }
+}
+
+.create-button {
+  padding: 10px;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: $font-size-any-small;
+  line-height: $line-height-any-small;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.create-employees-button {
+  margin-left: auto;
+  margin-right: 10px;
+  color: $white-color;
+  background-color: $blue-color-hsl20115230;
+}
+
+.create-group-button {
+  color: $blue-color-hsl20115230;
+  background-color: $grey-color-hsl226229234;
+}
+
+.employees-group-title {
+  color: $grey-color-hsl128128128;
+}

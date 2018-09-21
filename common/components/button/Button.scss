@@ -1,0 +1,32 @@
+.component-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  padding: 6px 12px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+  background: -ms-linear-gradient(top, #fff, #ededed);
+  border: 1px solid #b7b7b7;
+  outline: none;
+  border-radius: 2px;
+  color: #000000;
+  cursor: pointer;
+}
+.component-button-hidden {
+  visibility: hidden;
+}
+.component-button:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+  background: -ms-linear-gradient(top, #fff, #dcdcdc);
+}
+.component-button:active {
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+  background: -ms-linear-gradient(top, #ededed, #fff);
+}
+.component-button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
