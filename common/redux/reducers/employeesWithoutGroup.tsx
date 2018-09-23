@@ -5,13 +5,15 @@ const defaultState = [
         name: 'Иванов',
         surname: 'Дмитрий',
         patronymic: 'Иванович',
-        accessLevel: 'Гость'
+        accessLevel: 'Гость',
+        selectGroup: null
     },
     {
         name: 'Иванов',
         surname: 'Дмитрий',
         patronymic: 'Иванович',
-        accessLevel: 'Гость'
+        accessLevel: 'Гость',
+        selectGroup: null
     }
 ];
 
@@ -26,7 +28,8 @@ export default function (state = defaultState, action){
                 name: payload.name,
                 surname: payload.surname,
                 patronymic: payload.patronymic,
-                accessLevel: payload.accessLevel
+                accessLevel: payload.accessLevel,
+                selectGroup: null
             });
 
             return stateCopy;

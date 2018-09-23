@@ -1,5 +1,5 @@
 import * as React from "react";
-import './EmployeesItems.scss';
+import './EmployeesCard.scss';
 import {connect} from "react-redux";
 import {FormContainer} from "../../../../../../common/components/form_container/FormContainer";
 import Button from "../../../../../../common/components/button/Button";
@@ -65,6 +65,7 @@ class EmployeesItems extends React.Component<IProps, IState> {
             selectGroup: ''
         });
 
+        this.selectValue = '';
         this.selectRef.children[0].selected = true;
     }
 
@@ -75,13 +76,13 @@ class EmployeesItems extends React.Component<IProps, IState> {
     getEmployeesCardData() {
         const data = this.formRef.getValue();
 
-        data['selectValue'] = this.selectValue;
+        data['selectGroup'] = this.selectValue;
 
-        if (!data['selectValue'] || (data['selectValue'] === 'Выберите из списка созданных групп')) {
+        if (!data['selectGroup'] || (data['selectGroup'] === 'Выберите из списка созданных групп')) {
             this.props.addEmployeesWithoutGroup(data);
         }
 
-        if (data['selectValue']) {
+        if (data['selectGroup']) {
             this.props.addEmployeesInGroup(data);
         }
 

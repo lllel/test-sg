@@ -112,7 +112,7 @@
     border: 3px solid grey;
     border-top-color: transparent;
     border-left-color: transparent;
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
     cursor: pointer;
   }
 }
@@ -129,7 +129,7 @@
   border: 3px solid grey;
   border-top-color: transparent;
   border-left-color: transparent;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   cursor: pointer;
 }
 
@@ -137,6 +137,14 @@
   position: absolute;
   top: 0;
   left: 35%;
+}
+
+.employees-in-group-container {
+  width: 100%;
+}
+
+.groupContainerRef .employees-item-container {
+  margin-left: 30px;
 }
 
 .employees-hidden .employees-in-group-container {

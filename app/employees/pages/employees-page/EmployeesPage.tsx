@@ -4,12 +4,13 @@ import {InputText} from "../../../../common/components/input_text/InputText";
 import Button from "../../../../common/components/button/Button";
 import {connect} from "react-redux";
 import {addGroup} from "../../../../common/redux/action-create/actionCreate";
-import EmployeesItem from "./parts/employees-item/EmployeesItem";
 import GroupItems from './parts/group-item/GropupItems';
-import EmployeesItems from "./parts/employees-items/EmployeesItems";
+import EmployeesItems from "./parts/employees-card/EmployeesCard";
+import EmployeesItem from "./parts/employees-item/EmployeesItem";
 
 interface IProps {
     addGroup?: () => void;
+    employeesWithoutGroup?: any;
 }
 
 interface IState {
@@ -54,11 +55,23 @@ class EmployeesPage extends React.Component<IProps, IState> {
                 <GroupItems/>
                 <div className={'employees-group-container'}>
                     <h2 className={'employees-group-title'}>Сотрудники без группы</h2>
-                    <EmployeesItem/>
+                    {this.renderEmployeesItemsWithoutGroups()}
                 </div>
             </>
         );
     }
+
+    renderEmployeesItemsWithoutGroups() {
+        return this.props.employeesWithoutGroup.map((item, index) => {
+            return (
+                <EmployeesItem key={index} name={item.name} surname={item.surname} patronymic={item.patronymic} accessLevel={item.accessLevel} selectGroup={item.selectGroup}/>
+            );
+        });
+    }
 }
 
-export default connect(null, {addGroup})(EmployeesPage);
+export default connect((state: any) => {
+    return {
+        employeesWithoutGroup: state.employeesWithoutGroup
+    };
+}, {addGroup})(EmployeesPage);

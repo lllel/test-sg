@@ -4,18 +4,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
   margin-bottom: 3px;
   padding: 5px;
   background-color: $grey-color-hsl237237237;
-}
-
-.groupContainerRef .employees-item-container {
-  width: 98%;
-  margin-left: auto;
-}
-
-.employees-in-group-container {
-  width: 100%;
 }
 
 .employees-item-container img {

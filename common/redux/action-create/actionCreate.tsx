@@ -29,7 +29,8 @@ export function addEmployeesWithoutGroup(employees) {
                 name: employees.name,
                 surname: employees.surname,
                 patronymic: employees.patronymic,
-                accessLevel: employees.accessLevel
+                accessLevel: employees.accessLevel,
+                selectGroup: employees.selectGroup
             }
         });
     }
@@ -44,7 +45,7 @@ export function addEmployeesInGroup(employees) {
                 surname: employees.surname,
                 patronymic: employees.patronymic,
                 accessLevel: employees.accessLevel,
-                selectGroup: employees.selectValue
+                selectGroup: employees.selectGroup
             }
         });
     }

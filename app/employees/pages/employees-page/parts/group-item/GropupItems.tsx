@@ -3,7 +3,7 @@ import './GroupItems.scss';
 import {addSubGroup} from "../../../../../../common/redux/action-create/actionCreate";
 import {connect} from "react-redux";
 import Button from "../../../../../../common/components/button/Button";
-import EmployeesItemInGroup from "../employees-item-in-group/EmployeesItemInGroup";
+import EmployeesItem from "../employees-item/EmployeesItem";
 
 interface IProps {
     addSubGroup?: (id: string | number, dataParent: string | number, idLastElement: string | number) => void;
@@ -56,18 +56,15 @@ class GroupItems extends React.Component<IProps, IState> {
     }
 
     sortEmployeesInGroups() {
+        this.props.employeesInGroup.forEach((item) => {
+            let container = this.groupContainerRef.querySelectorAll(`[data-id="${item.selectGroup}"]`);
 
-        // СОРТИРОВКА СОТРУДНИКОВ В ПОДГРУППЫ
-
-        // this.props.employeesInGroup.forEach((item) => {
-        //     let container = this.groupContainerRef.querySelectorAll(`[data-id="${item.selectGroup}"]`);
-        //
-        //     if (container[1] && !container[1].closest('.group-item')) {
-        //         for (let i = 1; i < container.length; i++) {
-        //             container[0].querySelector('.employees-in-group-container').append(container[i])
-        //         }
-        //     }
-        // });
+            for (let i = 1; i < container.length; i++) {
+                if (container[0] && container[i] && !container[i].closest('.group-item')) {
+                    container[0].querySelector('.employees-in-group-container').appendChild(container[i]);
+                }
+            }
+        });
     }
 
     componentDidMount() {
@@ -84,7 +81,10 @@ class GroupItems extends React.Component<IProps, IState> {
         return (
             <div ref={(r) => this.groupContainerRef = r} className={'groupContainerRef'} onClick={this.onGroupClick.bind(this)}>
                 {this.renderGroups()}
-                {this.renderEmployeesInGroup()}
+                <div>
+                    {this.renderEmployeesInGroup()}
+                </div>
+
             </div>
         );
     }
@@ -102,8 +102,8 @@ class GroupItems extends React.Component<IProps, IState> {
                     </div>
                     <div className={'employees-in-group-container'}/>
                 </div>
-            )});
-
+            )
+        });
     }
 
     renderSubGroup(data) {
@@ -124,9 +124,11 @@ class GroupItems extends React.Component<IProps, IState> {
     }
 
     renderEmployeesInGroup() {
-        return this.props.employeesInGroup.map((item, index) => {
-            return <EmployeesItemInGroup key={index} name={item.name} surname={item.surname} patronymic={item.patronymic} accessLevel={item.accessLevel} selectGroup={item.selectGroup}/>;
-        });
+        if (this.props.employeesInGroup.length) {
+            return this.props.employeesInGroup.map((item, index) => {
+                return <EmployeesItem key={index} name={item.name} surname={item.surname} patronymic={item.patronymic} accessLevel={item.accessLevel} selectGroup={item.selectGroup}/>;
+            });
+        }
     }
 }
 

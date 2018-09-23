@@ -6,7 +6,7 @@ const defaultState = [
         surname: 'Дмитрий',
         patronymic: 'Иванович',
         accessLevel: 'Гость',
-        selectGroup: '2.2.1'
+        selectGroup: '2.1'
     }
 ];
 
