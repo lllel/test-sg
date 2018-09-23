@@ -10,6 +10,18 @@
   background-color: $grey-color-hsl237237237;
 }
 
+.employees-item-container .create-subgroup-add {
+  &:before {
+    content: '';
+    display: none;
+  }
+
+  &:after {
+    content: '';
+    display: none;
+  }
+}
+
 .employees-item-container img {
   display: block;
   width: 58px;

@@ -7,12 +7,6 @@
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 2px;
-  background-color: lavender;
-}
-
-.group-item ul {
-  margin-right: 50px;
 }
 
 .group-item-buttons-container {
@@ -89,8 +83,15 @@
 }
 
 .employees-group-container {
-  width: 98%;
+  width: 99%;
   margin: 70px 0 50px auto;
+}
+
+.employees-description {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: lavender;
 }
 
 .group-title {
@@ -140,13 +141,26 @@
 }
 
 .employees-in-group-container {
-  width: 100%;
+  width: 99%;
+  margin-left: auto;
+}
+
+.employees-description {
+  margin-bottom: 3px;
+}
+
+.employees-description .group-item-buttons-container {
+  margin-right: 7px;
 }
 
 .groupContainerRef .employees-item-container {
-  margin-left: 30px;
+  margin-left: auto;
 }
 
 .employees-hidden .employees-in-group-container {
+  display: none;
+}
+
+.employees-hidden .group-item {
   display: none;
 }

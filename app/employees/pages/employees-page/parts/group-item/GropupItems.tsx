@@ -93,12 +93,14 @@ class GroupItems extends React.Component<IProps, IState> {
         return this.props.groups.map((item, index) => {
             return (
                 <div key={index} data-id={item.itemId} data-parent={item.itemParentId} className={'group-item'}>
-                    <p className={'group-title'}>{item.title}</p>
-                    <p className={'level-access-title'}>Уровень доступа:</p>
-                    <div className={'group-item-buttons-container'}>
-                        <Button className={'create-subgroup-button'} title={'Создать подгруппу'} onClick={this.onAddSubGroupClick.bind(this)}/>
-                        <Button className={'create-subgroup-add'}/>
-                        <Button className={'create-subgroup-delete'}/>
+                    <div className={'employees-description'}>
+                        <p className={'group-title'}>{item.title}</p>
+                        <p className={'level-access-title'}>Уровень доступа:</p>
+                        <div className={'group-item-buttons-container'}>
+                            <Button className={'create-subgroup-button'} title={'Создать подгруппу'} onClick={this.onAddSubGroupClick.bind(this)}/>
+                            <Button className={'create-subgroup-add'}/>
+                            <Button className={'create-subgroup-delete'}/>
+                        </div>
                     </div>
                     <div className={'employees-in-group-container'}/>
                 </div>
@@ -115,8 +117,9 @@ class GroupItems extends React.Component<IProps, IState> {
                 if (item1.itemId === item2.itemParentId) {
                     let elem1 = this.groupContainerRef.querySelector(`[data-id="${item1.itemId}"]`);
                     let elem2 = this.groupContainerRef.querySelector(`[data-id="${item2.itemId}"]`);
+                    let padding = (item2.itemId.split('.').length) * 15;
 
-                    elem2.style.paddingLeft = '15px';
+                    elem2.querySelector('.employees-description').style.paddingLeft = `${padding}px`;
                     elem1.appendChild(elem2);
                 }
             });
