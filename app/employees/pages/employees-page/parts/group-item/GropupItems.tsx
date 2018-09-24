@@ -55,36 +55,18 @@ class GroupItems extends React.Component<IProps, IState> {
         }
     }
 
-    sortEmployeesInGroups() {
-        this.props.employeesInGroup.forEach((item) => {
-            let container = this.groupContainerRef.querySelectorAll(`[data-id="${item.selectGroup}"]`);
-
-            for (let i = 1; i < container.length; i++) {
-                if (container[0] && container[i] && !container[i].closest('.group-item')) {
-                    container[0].querySelector('.employees-in-group-container').appendChild(container[i]);
-                }
-            }
-        });
-    }
-
     componentDidMount() {
         this.renderSubGroup(this.props.groups);
-        this.sortEmployeesInGroups();
     }
 
     componentDidUpdate() {
         this.renderSubGroup(this.props.groups);
-        this.sortEmployeesInGroups();
     }
 
     render() {
         return (
             <div ref={(r) => this.groupContainerRef = r} className={'groupContainerRef'} onClick={this.onGroupClick.bind(this)}>
                 {this.renderGroups()}
-                <div>
-                    {this.renderEmployeesInGroup()}
-                </div>
-
             </div>
         );
     }
@@ -102,7 +84,15 @@ class GroupItems extends React.Component<IProps, IState> {
                             <Button className={'create-subgroup-delete'}/>
                         </div>
                     </div>
-                    <div className={'employees-in-group-container'}/>
+                    <div className={'employees-in-group-container'}>
+
+                        {this.props.employeesInGroup.map((it, i) => {
+                            if (item.itemId === it.selectGroup) {
+                                return <EmployeesItem key={i} name={it.name} surname={it.surname} patronymic={it.patronymic} accessLevel={it.accessLevel} selectGroup={it.selectGroup}/>;
+                            }
+                        })}
+
+                    </div>
                 </div>
             )
         });
@@ -124,14 +114,6 @@ class GroupItems extends React.Component<IProps, IState> {
                 }
             });
         });
-    }
-
-    renderEmployeesInGroup() {
-        if (this.props.employeesInGroup.length) {
-            return this.props.employeesInGroup.map((item, index) => {
-                return <EmployeesItem key={index} name={item.name} surname={item.surname} patronymic={item.patronymic} accessLevel={item.accessLevel} selectGroup={item.selectGroup}/>;
-            });
-        }
     }
 }
 
