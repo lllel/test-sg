@@ -39,14 +39,22 @@ class GroupItems extends React.Component<IProps, IState> {
 
     onAddSubGroupClick(evt) {
         const dataId = evt.target.closest('[data-id]').getAttribute('data-id');
-        let elems = evt.target.closest(`[data-id]`).querySelectorAll(`[data-parent="${dataId}"]`);
-        const arrElems = Array.from(elems);
+        const arrElems = [];
+
+        this.props.groups.forEach((item) => {
+            this.props.groups.forEach((it) => {
+                if ((item.itemId === dataId) && (item.itemId === it.itemParentId)) {
+                    arrElems.push(it);
+                }
+            });
+        });
+
         let dataIdLastElement;
         let dataParent;
 
         if (arrElems.length) {
-            dataIdLastElement = (arrElems[arrElems.length - 1] as any).getAttribute('data-id');
-            dataParent = (arrElems[arrElems.length - 1] as any).getAttribute('data-parent');
+            dataIdLastElement = (arrElems[arrElems.length - 1] as any).itemId;
+            dataParent = (arrElems[arrElems.length - 1] as any).itemParentId;
 
             this.props.addSubGroup(dataId, dataParent, dataIdLastElement);
 
@@ -93,6 +101,11 @@ class GroupItems extends React.Component<IProps, IState> {
                         })}
 
                     </div>
+
+                    {/*{this.props.groups.map((it, i) => {*/}
+                        {/*console.log(item.itemId === it.itemParentId);*/}
+                    {/*})}*/}
+
                 </div>
             )
         });
