@@ -63,70 +63,57 @@ class GroupItems extends React.Component<IProps, IState> {
         }
     }
 
-    componentDidMount() {
-        this.renderSubGroup(this.props.groups);
-    }
-
-    componentDidUpdate() {
-        this.renderSubGroup(this.props.groups);
-    }
-
     render() {
         return (
             <div ref={(r) => this.groupContainerRef = r} className={'groupContainerRef'} onClick={this.onGroupClick.bind(this)}>
-                {this.renderGroups()}
+                {this.props.groups.map((item) => {
+                    if (item.itemId.indexOf('.') !== -1) {
+                        return null;
+                    }
+
+                    return this.renderGroups(item);
+                })}
             </div>
         );
     }
 
-    renderGroups() {
-        return this.props.groups.map((item, index) => {
-            return (
-                <div key={index} data-id={item.itemId} data-parent={item.itemParentId} className={'group-item'}>
-                    <div className={'employees-description'}>
-                        <p className={'group-title'}>{item.title}</p>
-                        <p className={'level-access-title'}>Уровень доступа:</p>
-                        <div className={'group-item-buttons-container'}>
-                            <Button className={'create-subgroup-button'} title={'Создать подгруппу'} onClick={this.onAddSubGroupClick.bind(this)}/>
-                            <Button className={'create-subgroup-add'}/>
-                            <Button className={'create-subgroup-delete'}/>
-                        </div>
+    renderGroups(item) {
+        let defaultPadding = 15;
+        let padding;
+
+        if (item.itemId.indexOf('.') !== -1) {
+            padding = (defaultPadding * item.itemId.split('.').length) - defaultPadding;
+        }
+
+        return (
+            <div key={item.itemId} data-id={item.itemId} data-parent={item.itemParentId} className={'group-item'}>
+                <div className={'employees-description'} style={{paddingLeft: `${padding}px`}}>
+                    <p className={'group-title'}>{item.title}</p>
+                    <p className={'level-access-title'}>Уровень доступа:</p>
+                    <div className={'group-item-buttons-container'}>
+                        <Button className={'create-subgroup-button'} title={'Создать подгруппу'} onClick={this.onAddSubGroupClick.bind(this)}/>
+                        <Button className={'create-subgroup-add'}/>
+                        <Button className={'create-subgroup-delete'}/>
                     </div>
-                    <div className={'employees-in-group-container'}>
+                </div>
+                <div className={'employees-in-group-container'}>
 
-                        {this.props.employeesInGroup.map((it, i) => {
-                            if (item.itemId === it.selectGroup) {
-                                return <EmployeesItem key={i} name={it.name} surname={it.surname} patronymic={it.patronymic} accessLevel={it.accessLevel} selectGroup={it.selectGroup}/>;
-                            }
-                        })}
-
-                    </div>
-
-                    {/*{this.props.groups.map((it, i) => {*/}
-                        {/*console.log(item.itemId === it.itemParentId);*/}
-                    {/*})}*/}
+                    {this.props.employeesInGroup.map((it, i) => {
+                        if ((item.itemId === it.selectGroup)) {
+                            return <EmployeesItem key={i} name={it.name} surname={it.surname} patronymic={it.patronymic} accessLevel={it.accessLevel} selectGroup={it.selectGroup}/>;
+                        }
+                    })}
 
                 </div>
-            )
-        });
-    }
 
-    renderSubGroup(data) {
-        data.forEach((item, index) => {
-            data.forEach((it, i) => {
-                let item1 = data[index];
-                let item2 = data[i];
+                {this.props.groups.map((it) => {
+                    if (item.itemId === it.itemParentId) {
+                        return this.renderGroups(it);
+                    }
+                })}
 
-                if (item1.itemId === item2.itemParentId) {
-                    let elem1 = this.groupContainerRef.querySelector(`[data-id="${item1.itemId}"]`);
-                    let elem2 = this.groupContainerRef.querySelector(`[data-id="${item2.itemId}"]`);
-                    let padding = (item2.itemId.split('.').length) * 15;
-
-                    elem2.querySelector('.employees-description').style.paddingLeft = `${padding}px`;
-                    elem1.appendChild(elem2);
-                }
-            });
-        });
+            </div>
+        )
     }
 }
 
